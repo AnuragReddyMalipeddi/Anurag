@@ -1,0 +1,32 @@
+
+### String Cleaning and Pattern Replacement
+
+```{r}
+
+bldg_df$city <- "San Francisco"
+bldg_df$state <- "CA"
+bldg_df$record_id <- as.character(bldg_df$record_id)
+
+bldg_df$proposed_construction_type_description <-
+  bldg_df$proposed_construction_type_description %>% 
+  str_remove_all(pattern = "\\(|\\)") %>% 
+  str_replace_all(" ", "_") %>% 
+  as_factor()
+
+bldg_df$street_name <- str_remove(string = bldg_df$street_name, pattern = "^0+")
+
+bldg_df$street_name <- str_replace_all(string = bldg_df$street_name,
+                                       pattern = "Bay Shore",
+                                       replacement = "Bayshore")
+
+bldg_df$street_suffix <- str_replace_all(string = bldg_df$street_suffix,
+                                       pattern = "Bl",
+                                       replacement = "Blvd")
+
+bldg_df$street_suffix <- str_replace_all(string = bldg_df$street_suffix,
+                                       pattern = "Tr",
+                                       replacement = "Ter")
+
+bldg_df$changed_use <- bldg_df$existing_use != bldg_df$proposed_use
+bldg_df$estimated_revised_diff <- bldg_df$revised_cost - bldg_df$estimated_cost
+```

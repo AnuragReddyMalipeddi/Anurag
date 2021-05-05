@@ -1,0 +1,11 @@
+
+-------------
+
+## Geocoding: OpenStreetMap API Search Functions
+
+-------------
+
+The geocode function below allow us to make requests to Nominatim a search engine for OpenStreetMap data.
+
+* Nominatim: https://nominatim.openstreetmap.org/
+* Resources: https://nominatim.org/release-docs/develop/api/Search

@@ -1,0 +1,17 @@
+### Project Cost and Zoning 
+
+To look deeper into changes in zoning and type of constructions. We want to select only project that changed the building use. Also we will like to look at developments with significant capital investment in particular greater than half a million dollars 
+
+```{r}
+
+bldg_df <- bldg_df %>% arrange(desc(estimated_cost))
+bldg_df <- bldg_df[bldg_df$changed_use == TRUE,]
+bldg_df <- bldg_df %>% filter(revised_cost > 500000)
+
+bldg_df$zipcode <- as_factor(bldg_df$zipcode)
+bldg_df$permit_type <- as_factor(bldg_df$permit_type)
+bldg_df$neighborhoods_boundaries <- as_factor(bldg_df$neighborhoods_boundaries)
+bldg_df$proposed_use <- as_factor(bldg_df$proposed_use)
+
+head(bldg_df)
+```

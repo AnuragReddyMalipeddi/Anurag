@@ -1,0 +1,71 @@
+-------------
+
+## Notebook Instructions
+
+-------------
+
+* In many cases we have access to data with location information e.g. Address, City ,County ,Zip Code , Country. To visualize this data with more detail we need to use geolocation.
+* In order get the actual geolocation coordinates (Longitute,Latitude) for the location data, we need to calculate this coordenates.
+* Using nominatim a free search engine for OpenStreetMap data to easily find out geolocation coordinates.
+
+**OpenStreetMap:** Is open data built by a community of mappers that contribute and maintain data about roads, trails, cafés, railway stations, and much more, all over the world.
+
+* https://www.openstreetmap.org/about
+
+### Load Packages in R/RStudio 
+
+We are going to use tidyverse a collection of R packages designed for data science. As well as other packages to help with data cleaning and processing. 
+
+* tidiverse: https://www.tidyverse.org/
+* rvest: https://github.com/tidyverse/rvest
+* stringi: https://github.com/gagolews/stringi
+* jsonlite: https://github.com/jeroen/jsonlite
+
+
+*The chunk below checks that all the necessary packages are installed in the computer*
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+
+options(scipen = 9999)
+
+# Here we are checking if the package is installed
+if(!require("tidyverse")){
+  # If the package is not in the system then it will be install
+  install.packages("tidyverse", dependencies = TRUE)
+  # Here we are loading the package
+  library("tidyverse")
+}
+
+# Here we are checking if the package is installed
+if(!require("rvest")){
+  # If the package is not in the system then it will be install
+  install.packages("rvest", dependencies = TRUE)
+  # Here we are loading the package
+  library("rvest")
+}
+
+# Here we are checking if the package is installed
+if(!require("stringi")){
+  # If the package is not in the system then it will be install
+  install.packages("stringi", dependencies = TRUE)
+  # Here we are loading the package
+  library("stringi")
+}
+
+# Here we are checking if the package is installed
+if(!require("lubridate")){
+  # If the package is not in the system then it will be install
+  install.packages("lubridate", dependencies = TRUE)
+  # Here we are loading the package
+  library("lubridate")
+}
+
+
+# Here we are checking if the package is installed
+if(!require("jsonlite")){
+  # If the package is not in the system then it will be install
+  install.packages("jsonlite", dependencies = TRUE)
+  # Here we are loading the package
+  library("jsonlite")
+}
+```

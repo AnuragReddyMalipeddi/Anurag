@@ -1,0 +1,21 @@
+
+### Preparing the address string variable to match the OpenStreeMaps API
+
+```{r}
+# ADDRESS VARIABLE MUST MATH NOMINATIM API
+address <- paste0(bldg_df$street_number," ",
+                  bldg_df$street_name," ",
+                  bldg_df$street_suffix)
+
+# DATA CLEANING SPECIAL CASES (e.g. 3333-3339 N CLARK)
+query <- stri_replace(str = address, 
+                      replacement = "", 
+                      regex = "(-[0-9]+\\s)")
+
+# REPLACE SPACES (\\s) OR COMMAS (,) WITH + SIGN
+query <- str_replace_all(string = query, 
+                         pattern = "\\s|,", 
+                         replacement = "+")
+
+head(query)
+```

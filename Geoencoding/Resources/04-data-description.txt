@@ -1,0 +1,11 @@
+
+
+-------------
+
+## Data Source: San Francisco Buildings Permit Data
+
+-------------
+
+This data set pertains to all types of structural permits. Data includes details on application/permit numbers, job addresses, supervisorial districts, and the current status of the applications.
+
+* Source: https://data.sfgov.org/Housing-and-Buildings/Building-Permits/i98e-djp9

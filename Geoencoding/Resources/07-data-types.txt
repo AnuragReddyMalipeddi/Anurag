@@ -1,0 +1,20 @@
+
+### Date Types
+
+```{r}
+bldg_df$issued_date <- bldg_df$issued_date %>% mdy() %>% as_date()
+bldg_df$issued_year <- bldg_df$issued_date %>% year()
+bldg_df$issued_month <- bldg_df$issued_date %>% month(label = TRUE)
+bldg_df$completed_date <- bldg_df$completed_date %>% mdy() %>% as_date()
+bldg_df$completed_year <- bldg_df$completed_date %>% year()
+bldg_df$completed_month <- bldg_df$completed_date %>% month(label = TRUE)
+
+bldg_df$issued_completed_days <- bldg_df$completed_date - bldg_df$issued_date 
+bldg_df$issued_completed_years <- bldg_df$completed_year - bldg_df$issued_year 
+
+bldg_df$filed_date <- bldg_df$filed_date %>% mdy() %>% as_date()
+bldg_df$filed_issued_days <- bldg_df$issued_date - bldg_df$filed_date
+
+bldg_df$permit_expiration_date <- bldg_df$permit_expiration_date %>% mdy() %>% as_date()
+bldg_df$issued_expiration_days <- bldg_df$permit_expiration_date - bldg_df$issued_date
+```

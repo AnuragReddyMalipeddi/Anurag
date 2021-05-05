@@ -1,0 +1,28 @@
+### Lets change the name of some columns and remote other that are irrelevant for this use case.
+
+```{r}
+
+colremove = c("First Construction Document Date",
+              "Structural Notification",
+              "Number of Existing Stories",
+              "Number of Proposed Stories",
+              "Voluntary Soft-Story Retrofit",
+              "Fire Only Permit","Existing Units",
+              "Proposed Units","Plansets",
+              "TIDF Compliance","Existing Construction Type",
+              "Proposed Construction Type","Site Permit",
+              "Supervisor District","Current Police Districts",
+              "Current Supervisor Districts",
+              "Current Status Date", "Permit Creation Date",
+              "Analysis Neighborhoods","Lot","Location",
+              "SF Find Neighborhoods","Unit","Block", "Permit Type",
+              "Unit Suffix","Street Number Suffix",
+              "Existing Construction Type Description")
+
+data <- data[colnames(data)[1:47]] %>% select(-all_of(colremove))
+
+data <- rename(data, "Neighborhoods Boundaries" = "Neighborhoods - Analysis Boundaries")
+
+data <- rename(data, "Permit Type" = "Permit Type Definition")
+
+```

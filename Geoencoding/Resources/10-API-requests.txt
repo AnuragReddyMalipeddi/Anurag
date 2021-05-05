@@ -1,0 +1,35 @@
+
+## Data Collection: OpenStreeMaps API Request 
+
+```{r}
+df <- geocode(record_id = bldg_df$record_id,
+              address = query,
+              city = bldg_df$city, 
+              state = bldg_df$state,
+              zipcode = bldg_df$zipcode)
+```
+
+Create a main dataset with all the relevant information
+
+```{r echo = FALSE, message=FALSE, warning=FALSE}
+
+bldg_df <- left_join(bldg_df, df, by="record_id")
+
+bldg_df$address <- str_replace_all(string = bldg_df$address,
+                                   pattern = "\\+",
+                                   replacement = " ")
+
+colremove <- c("street_number","street_name", 
+                "street_suffix", "current_status")
+
+bldg_df <- bldg_df %>% select(-one_of(colremove))
+
+head(bldg_df)
+
+```
+
+Finally lets save the new dataset containing the restaurants Geolocation (latitude, longitude).
+
+```{r}
+write_csv(bldg_df, "data/building_geocoord.csv")
+```
